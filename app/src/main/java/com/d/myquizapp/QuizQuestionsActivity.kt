@@ -59,6 +59,16 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
         tvOptionTwo?.text = question.optionTwo
         tvOptionThree?.text = question.optionThree
         tvOptionFour?.text = question.optionFour
+
+        if(mCurrentPosition == mQuestionsList!!.size){
+            btnSubmit?.text = "Finish"
+        }else{
+            btnSubmit?.text = "Submit"
+
+        }
+
+
+
     }
 
     override fun onClick(p0: View?) {
