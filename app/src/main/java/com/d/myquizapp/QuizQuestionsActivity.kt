@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -22,6 +23,7 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
     private var tvOptionTwo:TextView? = null
     private var tvOptionThree:TextView? = null
     private var tvOptionFour:TextView? = null
+    private var btnSubmit : Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +31,7 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
      mQuestionsList = Constants.getQuestions()
         setQuestion()
-
+        btnSubmit = findViewById(R.id.btn_submit)
     }
 
     private fun setQuestion() {
