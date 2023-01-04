@@ -3,11 +3,16 @@ package com.d.myquizapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 
-class QuizQuestionsActivity : AppCompatActivity() {
+class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
+
+    private var mCurrentPosition: Int = 1
+    private var mQuestionsList:ArrayList<Question>? = null
+    private var mSelectedOptionPosition : Int = 0
 
     private var progressBar: ProgressBar? = null
     private var tvProgress: TextView? = null
@@ -22,15 +27,18 @@ class QuizQuestionsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_questions)
 
-        val questionsList = Constants.getQuestions()
-        Log.e("Question Size","${questionsList.size}")
-        for (i in questionsList){
-            Log.e("Questions",i.question)
-        }
-        val currentPosition = 1
-        val question: Question? = questionsList[currentPosition - 1]
+     mQuestionsList = Constants.getQuestions()
+        setQuestion()
 
-        progressBar=findViewById(R.id.progressBar)
+    }
+
+    private fun setQuestion() {
+
+
+
+        val question: Question? = mQuestionsList!![mCurrentPosition - 1]
+
+        progressBar = findViewById(R.id.progressBar)
         tvProgress = findViewById(R.id.tv_progress)
         tvQuestion = findViewById(R.id.tv_question)
         ivImage = findViewById(R.id.iv_image)
@@ -39,16 +47,19 @@ class QuizQuestionsActivity : AppCompatActivity() {
         tvOptionThree = findViewById(R.id.tv_option_three)
         tvOptionFour = findViewById(R.id.tv_option_four)
 
-        progressBar?.progress=
-            currentPosition
-        tvProgress?.text = "$currentPosition" + "/" +progressBar?.max
+        progressBar?.progress =
+            mCurrentPosition
+        tvProgress?.text = "$mCurrentPosition" + "/" + progressBar?.max
 
-        tvQuestion?.text = question !! .question
+        tvQuestion?.text = question!!.question
         ivImage?.setImageResource(question.image)
         tvOptionOne?.text = question.optionOne
         tvOptionTwo?.text = question.optionTwo
         tvOptionThree?.text = question.optionThree
         tvOptionFour?.text = question.optionFour
+    }
 
+    override fun onClick(p0: View?) {
+        TODO("Not yet implemented")
     }
 }
