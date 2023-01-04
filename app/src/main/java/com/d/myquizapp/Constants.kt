@@ -1,18 +1,20 @@
 package com.d.myquizapp
 
+
 object Constants {
-    fun getQuestions() : ArrayList<Question>{
+
+    fun getQuestions(): ArrayList<Question> {
         val questionsList = ArrayList<Question>()
 
+        // 1
         val que1 = Question(
-            1,"what country does this flag belong to ?",
+            1, "What country does this flag belong to?",
             R.drawable.ic_flag_of_argentina,
-            "argentina","Austrailia","Armina","india",
-            1
-
+            "Argentina", "Australia",
+            "Armenia", "Austria", 1
         )
+
         questionsList.add(que1)
-        return questionsList
 
         // 2
         val que2 = Question(
@@ -105,6 +107,6 @@ object Constants {
         questionsList.add(que10)
 
         return questionsList
-
     }
+    // END
 }
